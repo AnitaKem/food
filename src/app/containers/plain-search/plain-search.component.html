@@ -1,0 +1,83 @@
+<div class="plain-search">
+  <input type="search" class="plain-search__input" #searhtext>
+  <button type="button" class="plain-search__btn" (click)="onSearch(searhtext.value)">Search</button>
+
+  <div class="plain-search__results result" *ngIf="searchResult">
+    <div class="result__main-info">
+      <h2>Main info</h2>
+      <div>
+        <label>Total hits: </label>
+        <span>{{ searchResult.totalHits }}</span>
+      </div>
+      <div>
+        <label>Current page: </label>
+        <span>{{ searchResult.currentPage }}</span>
+      </div>
+      <div>
+        <label>Total pages: </label>
+        <span>{{ searchResult.totalPages }}</span>
+      </div>      
+    </div>
+
+    <div class="result__most-relevant" *ngIf="searchResult.foods[0] as first">
+      <h2>Most relevant food</h2>
+      <div>
+        <label>FCD id: </label>
+        <span>{{ first.fdcId }}</span>
+      </div>
+      <div>
+        <label>Food code: </label>
+        <span>{{ first.foodCode }}</span>
+      </div>
+      <div>
+        <label>Description: </label>
+        <span>{{ first.description }}</span>
+      </div>
+      <div>
+        <label>Additional description: </label>
+        <span>{{ first.additionalDescriptions }}</span>
+      </div>    
+      <div>
+        <label>All highlight fields: </label>
+        <span [innerHTML]="first.allHighlightFields"></span>
+      </div>
+      <div>
+        <label>Data type: </label>
+        <span>{{ first.dataType }}</span>
+      </div>
+      <div>
+        <label>Published date: </label>
+        <span>{{ first.publishedDate }}</span>
+      </div>
+      <div>
+        <label>Score: </label>
+        <span>{{ first.score }}</span>
+      </div>
+    
+      <div class="nutrients-container">
+        <h2>Nutrients</h2>
+        <table class="nutrients-table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Number</th>
+              <th>Unit name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let nutrient of first.foodNutrients">
+              <td>{{ nutrient.nutrientId }}</td>
+              <td>{{ nutrient.nutrientName }}</td>
+              <td>{{ nutrient.nutrientNumber }}</td>
+              <td>{{ nutrient.unitName }}</td>
+              <td>{{ nutrient.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>            
+    </div>
+  </div>
+</div>
+
