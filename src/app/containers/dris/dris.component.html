@@ -1,0 +1,41 @@
+<h2>Elements</h2>
+<table *ngIf="elementsTitles" class="elements-table">
+  <thead>
+    <tr>
+      <th>Life-Stage Group</th>
+      <th *ngFor="let title of elementsTitles">{{ title }} ({{ elements[title].measure }})</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Children -->
+    <tr class="elements-table__subtitle">
+      <td [attr.colspan]="elementsCount + 1">Children</td>      
+    </tr>
+    <tr *ngFor="let interval of childrenIntervals">
+      <td>{{ interval }}</td>
+      <td *ngFor="let title of elementsTitles;">
+        {{ elements[title]?.lifestyleGroup?.children?.interval[interval] }}
+      </td>      
+    </tr>
+    <!-- Males -->
+    <tr class="elements-table__subtitle">
+      <td [attr.colspan]="elementsCount + 1">Males</td>      
+    </tr>
+    <tr *ngFor="let interval of adultIntervals">
+      <td>{{ interval }}</td>
+      <td *ngFor="let title of elementsTitles;">
+        {{ elements[title]?.lifestyleGroup?.males?.interval[interval] }}
+      </td>      
+    </tr>
+    <!-- Females -->
+    <tr class="elements-table__subtitle">
+      <td [attr.colspan]="elementsCount + 1">Females</td>      
+    </tr>
+    <tr *ngFor="let interval of adultIntervals">
+      <td>{{ interval }}</td>
+      <td *ngFor="let title of elementsTitles;">
+        {{ elements[title]?.lifestyleGroup?.females?.interval[interval] }}
+      </td>      
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+.elements-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  tr:nth-child(even):not(.elements-table__subtitle){
+    background-color: #f2f2f2;
+  }
+
+  tr:hover:not(.elements-table__subtitle) {
+    background-color: #ddd;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4c9faf;
+    color: white;
+  }
+
+  &__subtitle {
+    background-color: #4c9faf52;
+  }
+}
+
